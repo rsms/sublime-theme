@@ -1,0 +1,264 @@
+{
+  "name": "rsms dark mono",
+  "author": "rsms",
+  "variables": {
+    "red": "hsl(5,     0%, 50%)",
+    "orange": "hsl(27, 0%, 50%)",
+    "yellow": "hsl(60, 0%, 50%)",
+    "green": "hsl(150, 0%, 43%)",
+    "cyan": "hsl(180,  0%, 50%)",
+    "blue": "hsl(210,  0%, 50%)",
+    // "transparent": "#ff000000",  // note: ff needed to force transparency
+
+    "fg": "#fff",
+    "bg": "hsl(0, 0%, 8%)",
+    "unimportant": "color(var(fg) alpha(0.4))",
+    "cursor": "hsl(320, 90%, 70%)",
+    "selection": "hsl(204, 100%, 70%)",
+    "type": "var(orange)",
+    "keyword": "var(blue)",
+    "data": "var(green)",
+
+    "fgBase": "color(var(fg) alpha(0.8))",
+    "typeRef": "color(var(type) lightness(87%))",
+    "keywordBase": "color(var(keyword) lightness(70%))",
+    "dataBase": "color(var(data) lightness(70%))",
+  },
+  "globals": {
+    "foreground": "var(fgBase)",
+    "background": "var(bg)",
+    "caret": "var(cursor)",
+
+    // selection
+    "selection": "color(var(selection) alpha(0.3))",
+    "selection_border_width": "0",
+    "inactive_selection": "color(var(selection) alpha(0.2))",
+
+    // gutter
+    // "gutter": "#000", // defaults to background
+    "gutter_foreground": "color(var(fg) alpha(0.3))",
+    "line_highlight": "color(var(fg) alpha(0.12))",
+    "line_diff_width": "2",  // width of diff lines (in dp)
+    "line_diff_added": "var(green)",
+    "line_diff_modified": "color(var(yellow) lightness(65%))",
+    "line_diff_deleted": "color(var(red) lightness(60%))",
+
+    // guides
+    // alpha part controls color of guides (vertical tab lines)
+    "guide": "color(var(fg) alpha(0.06))",
+
+    // decorations
+    "highlight": "color(var(selection) alpha(0.4) lightness(70%))",  // border of "other" matches
+    "find_highlight_foreground": "#000",
+    "find_highlight": "var(yellow)",
+    "misspelling": "color(var(red) lightness(65%))",
+    // "invisibles": "#000",  // defaults to color(foreground alpha(0.35))
+
+    // brackets
+    "brackets_options": "foreground underline",
+    "bracket_contents_options": "foreground",
+    "brackets_foreground": "var(cursor)",
+    "bracket_contents_foreground": "var(cursor)",
+
+    // canvas shadow (indicates scroll)
+    "shadow": "color(var(cursor) alpha(0.8))",
+    "shadow_width": "5",
+  },
+  "rules": [
+    {
+      // Comments
+      "scope": "comment",
+      "foreground": "color(var(fg) alpha(0.35))",
+      // "foreground_adjust": "alpha(0.3)"
+    },
+
+    {
+      // Punctuation
+      // separator  e.g. "," and ":" in `{ foo: bar, baz: cat }`
+      // terminator e.g. ";" in `x = y;`
+      // accessor   e.g. "->" and "." in `foo->bar.baz`
+      // section    e.g. "(" and ")" in `foo((baz)bar)`
+      // section    e.g. "[" and "]" in `foo[bar]`
+      // section    e.g. "{" and "}" in `if { ... }`
+      //
+      // keyword.operator.type.annotation is for TypeScript
+      //   e.g. ":" in
+      //   interface Foo {
+      //     name :string
+      //   }
+      //
+      // meta.interface keyword.operator.optional is for TypeScript
+      //   e.g. "?" in
+      //   interface Foo {
+      //     name? :string
+      //   }
+      //
+      "scope": "punctuation.separator, punctuation.terminator, punctuation.accessor, punctuation.section, keyword.operator.type.annotation, meta.interface keyword.operator.optional, meta.field.declaration keyword.operator.optional",
+      "foreground": "var(unimportant)"
+    },
+
+    // Type
+    {
+      // Type definition
+      // e.g. "Foo" in `typedef struct x Foo` (C)
+      "scope": "entity.name.type, meta.type.declaration entity.name.type, entity.name.type.typedef",
+      "foreground": "color(var(type) lightness(70%))"
+    },
+    {
+      // Type reference
+      // e.g. "Foo" in `function hello(f :Foo)` (TS)
+      "scope": "support.type, meta.type.annotation entity.name.type, source.go storage.type, entity.other.inherited-class",
+      "foreground": "var(typeRef)",
+      // void getThing(const Foo* p)
+      // const meta.function.parameters meta.group storage.modifier
+      // Foo   meta.function.parameters meta.group
+      // p     meta.function.parameters meta.group variable.parameter
+    },
+
+    // Keyword
+    {
+      // Keyword
+      // e.g. "if" and "else" in "if this else that"
+      // storage.type.type      e.g. "type" in "type foo = int"
+      // storage.type.interface e.g. "interface" in "interface Foo {}"
+      // storage.type.class     e.g. "class" in "class Foo {}"
+      // keyword.operator.new   e.g. "new" in "new Error()"
+      "scope": "keyword, storage, storage.type.keyword, keyword.operator.new, keyword.operator.delete",
+      "foreground": "var(keywordBase)",
+    },
+    {
+      "scope": "keyword.operator",
+      // "foreground": "var(fgBase)"
+      "foreground": "color(var(orange) lightness(80%))"
+    },
+
+    // Function
+    { // Function definitions
+      "scope": "entity.name.function - meta.function-call",
+      "foreground": "var(fg)",
+      "font_style": "bold",
+    },
+
+    // Data
+    { // e.g. "foo" and 42
+      "scope": "string, constant",
+      "foreground": "var(dataBase)"
+    },
+    { // e.g. "%d" in `"age: %d"`
+      "scope": "string constant",
+      "foreground": "color(var(data) lightness(90%))"
+    },
+    { // e.g. "name" in `"user: ${name}"`
+      "scope": "string variable",
+      "foreground": "var(fgBase)"
+    },
+    { // regexp
+      "scope": "string.regexp",
+      "background": "color(var(keyword) alpha(0.1) lightness(60%))"
+    },
+    // {
+    //   "scope": "constant.language",
+    //   "foreground": [
+    //     "color(var(yellow) blend(#0f0 70%) lightness(70%))",  // nil, true
+    //     "color(var(yellow) blend(#f00 70%) lightness(70%))",  // undefined
+    //     "color(var(yellow) blend(#f00 70%) lightness(70%))",    // false, null
+    //     "color(var(yellow) blend(#00f 70%) lightness(70%))"
+    //   ],
+    //   // Uses "Hashed Syntax Highlighting"
+    //   // https://www.sublimetext.com/docs/3/color_schemes.html#hashed_syntax_highlighting
+    // },
+
+    // XML, HTML etc with tags
+    {
+      "scope": "meta.tag",
+      "foreground": "var(unimportant)"
+    },
+    { // things inside tag
+      "scope": "meta.tag entity, meta.tag.attributes",
+      "foreground": "var(fgBase)"
+    },
+    { // e.g. "a" in `<a href="hello"></a>`
+      "scope": "meta.tag entity.name",
+      "foreground": "var(typeRef)"
+    },
+
+    // Assembly
+    {
+      "scope": "storage.register, storage.other.register, constant.language.registers, entity.name.function.reg, constant.language.register",
+      "foreground": "var(typeRef)"
+    },
+    {
+      "scope": "source.asm entity.directive, source.asm support.function.directive",
+      "foreground": "color(var(yellow) lightness(80%))"
+    },
+
+    // Structured text
+    {
+      "scope": "text punctuation",
+      "foreground": "var(unimportant)"
+    },
+    {
+      "scope": "text markup.heading",
+      "foreground": "var(fg)",
+      "font_style": "bold"
+    },
+    { "scope": "text markup.italic", "font_style": "italic" },
+    { "scope": "text markup.bold", "font_style": "bold" },
+    { "scope": "text markup.bold & markup.italic", "font_style": "bold italic" },
+    { "scope": "text markup.strikethrough", "foreground": "var(unimportant)" },
+    { // List bullets
+      // "-" in "- hello\n- world"
+      "scope": "text markup.list punctuation.definition.list_item",
+      "foreground": "color(var(yellow) lightness(80%))",
+      "font_style": "bold"
+    },
+    // { // List item
+    //   "scope": "text markup.list meta.paragraph.list",
+    //   "foreground": "color(var(yellow) lightness(92%))",
+    // },
+    { // table header text
+      "scope": "text.html.markdown meta.table.header",
+      "foreground": "var(dataBase)",
+    },
+    { // table lines
+      "scope": "text.html.markdown punctuation.separator.table-cell, text.html.markdown meta.table.header-separator punctuation.section.table-header",
+      "foreground": "var(dataBase)",
+    },
+    // link, e.g. [Title](url)
+    { "scope": "text meta.link", "foreground": "var(fg)" },
+    { "scope": "text meta.link markup.underline.link", "foreground": "var(unimportant)" },
+    // image, e.g. ![alt](url)
+    { "scope": "text meta.image", "foreground": "var(unimportant)" },
+    { "scope": "text meta.image markup.underline.link", "foreground": "var(fg)" },
+    { // code, e.g. `...` and ```...```
+      "scope": "text markup.raw, text meta.code-fence.definition, text markup.raw.code-fence",
+      "background": "color(var(fg) alpha(0.07))"
+    },
+    {
+      "scope": "text meta.code-fence.definition constant",
+      "foreground": "var(unimportant)"
+    },
+
+
+    // misc
+    {
+      "scope": "invalid.deprecated",
+      "foreground": "var(red)",
+      "font_style": "italic underline"
+    },
+    {
+      "scope": "invalid.illegal",
+      "foreground": "var(fg)",
+      "background": "var(red)"
+    },
+
+    // Example of Hashed Syntax Highlighting
+    // https://www.sublimetext.com/docs/3/color_schemes.html#hashed_syntax_highlighting
+    // Note: It seems that "source - punctuation" means "source minus punctuation", but
+    // I'm not sure. I can't find documentation on this.
+    // {
+    //   "scope": "source - punctuation - keyword",
+    //   "foreground": ["hsl(200, 60%, 70%)", "hsl(330, 60%, 70%)"]
+    // }
+  ]
+}

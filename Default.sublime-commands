@@ -1,0 +1,20 @@
+[
+  {
+    "caption": "rsms: toggle dark/light",
+    "command": "rsms_toggle_light_dark_theme",
+  },
+  {
+    "caption": "rsms: lights off",
+    "command": "rsms_select_theme",
+    "args": {"style": "dark"}
+  },
+  {
+    "caption": "rsms: lights on",
+    "command": "rsms_select_theme",
+    "args": {"style": "light"}
+  },
+  {
+    "caption": "rsms: select theme...",
+    "command": "rsms_select_theme",
+  }
+]

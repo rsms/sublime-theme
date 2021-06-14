@@ -1,0 +1,190 @@
+{
+  "name": "rsms light",
+  "author": "rsms",
+  "variables":
+  {
+    "accent": "hsl(204, 97%, 54%)",
+    "black2": "hsl(30, 100%, 13%)",
+    "black3": "hsl(240, 100%, 10%)",
+    "black4": "hsl(200, 100%, 10%)",
+    "blue": "hsl(216, 100%, 33%)",
+    "blue2": "hsl(224, 100%, 50%)",
+    "blue3": "hsl(240, 100%, 23%)",
+    "blue4": "hsl(204, 100%, 83%)",
+    "cyan": "hsl(147, 100%, 76%)",
+    "cyan2": "hsl(144, 71%, 23%)",
+    "cyanDark": "hsl(160, 40%, 4%)",
+    "green": "hsl(85, 85%, 79%)",
+    "green2": "hsl(120, 14%, 23%)",
+    "grey": "hsl(0, 0%, 20%)",
+    "grey2": "hsl(0, 0%, 40%)",
+    "grey3": "hsl(0, 0%, 80%)",
+    "orange": "hsl(24, 61%, 74%)",
+    "pink": "hsl(317, 100%, 23%)",
+    "purple": "hsl(255, 29%, 47%)",
+    "red": "hsl(0, 100%, 30%)",
+    "red2": "hsl(0, 100%, 50%)",
+    "red3": "hsl(12, 100%, 50%)",
+    "red4": "hsl(345, 100%, 73%)",
+    "white": "hsl(0, 0%, 100%)",
+    "white2": "hsl(60, 47%, 96%)",
+    "yellow": "hsl(60, 100%, 50%)",
+    "yellow2": "hsl(53, 89%, 79%)",
+    "yellow3": "hsl(52, 100%, 63%)",
+  },
+  "globals":
+  {
+    "foreground": "black",
+    // "background": "#f6f8fa",
+    // "background": "hsl(60, 47%, 96%)",
+    // "background": "hsl(60, 30%, 98%)",
+    "background": "hsl(60, 30%, 99%)",
+    "accent": "var(accent)",
+    "caret": "var(blue2)",
+    "invisibles": "var(red2)",
+    "line_highlight": "color(var(yellow) alpha(0.31))",
+    "selection": "color(var(blue4) alpha(0.5))",
+    "selection_border": "color(black alpha(0))",
+    "inactive_selection": "color(var(blue4) alpha(0.25))",
+    "gutter_foreground": "var(grey3)",
+    "shadow": "var(white)",
+
+    // alpha part controls color of guides (vertical tab lines)
+    "guide": "color(black alpha(0.059))",
+
+    "find_highlight_foreground": "black",
+    "find_highlight": "var(yellow3)"
+  },
+  "rules":
+  [
+    {
+      "scope": "comment",
+      "foreground": "color(black alpha(0.47))"
+    },
+    {
+      "scope": "comment.documentation, meta.documentation.tag",
+      "foreground": "var(grey)"
+    },
+    {
+      "scope": "keyword.other.documentation, punctuation.definition.keyword",
+      "foreground": "var(grey)"
+    },
+    {
+      "scope": "constant, string constant",
+      "foreground": "var(pink)"
+    },
+    {
+      // e.g. ":" in `{foo: bar}`
+      "scope": "constant.other.object.key",
+      "foreground": "var(grey2)"
+    },
+    {
+      // e.g. "->" and "." in `foo->bar.baz`
+      "scope": "punctuation.accessor",
+      "foreground": "color(var(black3) alpha(0.47))"
+    },
+    {
+      // e.g. "(" and ")" in `foo((baz)bar)`
+      // e.g. "[" and "]" in `foo[bar]`
+      // e.g. "{" and "}" in `if { ... }`
+      "scope": "punctuation.section.group, punctuation.section.brackets, meta.brace, punctuation.section.block, punctuation.terminator",
+      "foreground": "color(var(black3) alpha(0.47))"
+    },
+    {
+      // e.g. "Foo" in `typedef struct x Foo` (C)
+      // e.g. "Config" in `new Config()` (TS)
+      "scope": "entity.name.type, source.ts support.type",
+      "foreground": "var(blue)"
+    },
+    {
+      // e.g. "Config" in `class Config` (TS)
+      "scope": "entity.name.type.class, entity.name.type.interface",
+      "font_style": "bold"
+    },
+    {
+      "scope": "keyword, storage",
+      "foreground": "color(black alpha(0.6))"
+    },
+    {
+      "scope": "storage.type, support.type",
+      "foreground": "color(var(black4) alpha(0.8))"
+    },
+    {
+      // e.g. "if"
+      "scope": "keyword.control",
+      "foreground": "color(var(blue3) alpha(0.67))"
+    },
+    {
+      // e.g. "#define"
+      "scope": "meta.preprocessor keyword.control",
+      "foreground": "color(var(black2) alpha(0.73))"
+    },
+    {
+      "scope": "entity.other.inherited-class",
+      "foreground": "var(grey2)",
+      "font_style": "bold"
+    },
+    {
+      "scope": "entity.name.function",
+      "font_style": "bold"
+    },
+    {
+      "scope": "meta.function-call entity.name.function, entity.invocation entity.name.function",
+      "font_style": "normal"
+    },
+    {
+      "scope": "string, string.unquoted, constant.character.escape",
+      "foreground": "var(cyan2)"
+    },
+    {
+      "scope": "string variable, string constant",
+      "foreground": "var(cyanDark)"
+    },
+    {
+      "scope": "string.regexp",
+      "foreground": "var(red4)"
+    },
+    {
+      "scope": "declaration.tag, declaration.tag entity, meta.tag, meta.tag entity",
+      "foreground": "var(purple)"
+    },
+    {
+      "scope": "entity.other.attribute-name",
+      "foreground": "var(grey)"
+    },
+    {
+      "scope": "meta.tag string, declaration.tag string",
+      "foreground": "var(green2)"
+    },
+
+    // machine code assembly
+    {
+      "scope": "storage.register",
+      "foreground": "var(yellow2)"
+    },
+    {
+      "scope": "storage.register.ip",
+      "foreground": "var(cyan)"
+    },
+    {
+      "scope": "storage.register.x64",
+      "foreground": "var(green)"
+    },
+    {
+      "scope": "entity.directive",
+      "foreground": "var(orange)"
+    },
+
+    // misc
+    {
+      "scope": "invalid.deprecated",
+      "foreground": "var(red)",
+      "font_style": "italic underline"
+    },
+    {
+      "scope": "invalid.illegal",
+      "foreground": "var(white)",
+      "background": "var(red3)"
+    }
+  ]
+}
