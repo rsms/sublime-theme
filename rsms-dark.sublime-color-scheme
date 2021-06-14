@@ -11,7 +11,7 @@
     // "transparent": "#ff000000",  // note: ff needed to force transparency
 
     "fg": "#fff",
-    "bg": "hsl(50, 3%, 11%)",
+    "bg": "hsl(50, 3%, 10%)",
     "unimportant": "color(var(fg) alpha(0.4))",
     "cursor": "hsl(320, 90%, 70%)",
     "accent": "var(cursor)",

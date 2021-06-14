@@ -28,6 +28,12 @@
     "sidebar_label_dir_light": "color(var(--background) blend(black 20%))",
     "sidebar_label_file_light": "color(var(--background) blend(black 35%))",
     "sidebar_label_selected_light": "black",
+
+    // Dimming of text "buffers" aka "sheets" aka "editors"
+    "sheet_dark_modifier": "blend(var(tabset_dark_bg) 70%)",
+    "sheet_light_modifier": "blend(var(tabset_light_bg) 80%)",
+    "sheet_medium_dark_modifier": "var(sheet_dark_modifier)",
+    "sheet_medium_modifier": "var(sheet_light_modifier)",
   },
   "rules": [
 
