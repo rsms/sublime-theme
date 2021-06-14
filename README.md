@@ -24,5 +24,6 @@ Open the command prompt in Sublime (⇧⌘P), type "rsms:" and select an option.
 
 ## Examples
 
-<img src="example-dark.png"><br>
-<img src="example-bright.png">
+<img src="rsms-dark.png"><br>
+<img src="rsms-dark-mono.png" title="Monochromatic version of the dark color scheme"><br>
+<img src="rsms-bright.png">
