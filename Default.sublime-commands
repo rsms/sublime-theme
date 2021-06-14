@@ -1,7 +1,7 @@
 [
   {
-    "caption": "rsms: toggle dark/light",
-    "command": "rsms_toggle_light_dark_theme",
+    "caption": "rsms: toggle dark/bright",
+    "command": "rsms_toggle_theme",
   },
   {
     "caption": "rsms: lights off",
@@ -11,7 +11,7 @@
   {
     "caption": "rsms: lights on",
     "command": "rsms_select_theme",
-    "args": {"style": "light"}
+    "args": {"style": "bright"}
   },
   {
     "caption": "rsms: select theme...",

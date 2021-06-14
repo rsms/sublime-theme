@@ -6,9 +6,9 @@ from glob import glob
 PLUGIN_DIR = os.path.dirname(os.path.realpath(__file__))
 PLUGIN_DIR_REL = os.path.relpath(PLUGIN_DIR)
 
-UI_THEME           = 'rsms-adaptive.sublime-theme'
-LIGHT_COLOR_SCHEME = pjoin(PLUGIN_DIR_REL, 'rsms-light.sublime-color-scheme')
-DARK_COLOR_SCHEME  = pjoin(PLUGIN_DIR_REL, 'rsms-dark.sublime-color-scheme')
+UI_THEME            = 'rsms-adaptive.sublime-theme'
+BRIGHT_COLOR_SCHEME = pjoin(PLUGIN_DIR_REL, 'rsms-bright.sublime-color-scheme')
+DARK_COLOR_SCHEME   = pjoin(PLUGIN_DIR_REL, 'rsms-dark.sublime-color-scheme')
 
 
 def load_settings():
@@ -22,15 +22,15 @@ def set_settings(**kwargs):
   sublime.status_message('rsms-theme: set settings ' + repr(kwargs.keys()))
 
 # note: sublime maps the name of each top level class to a command
-# through the naming convention: NaMeCommand => "na_me"
+# through the naming convention: RsmsToggleTheme => "rsms_toggle_theme"
 
-class RsmsToggleLightDarkThemeCommand(sublime_plugin.WindowCommand):
+class RsmsToggleThemeCommand(sublime_plugin.WindowCommand):
   def run(self, **kwargs):
     current_scheme = load_settings().get('color_scheme')
     if current_scheme.find("dark") == -1:
       set_settings(color_scheme=DARK_COLOR_SCHEME, theme=UI_THEME)
     else:
-      set_settings(color_scheme=LIGHT_COLOR_SCHEME, theme=UI_THEME)
+      set_settings(color_scheme=BRIGHT_COLOR_SCHEME, theme=UI_THEME)
 
 
 class RsmsSelectThemeCommand(sublime_plugin.WindowCommand):
@@ -38,8 +38,8 @@ class RsmsSelectThemeCommand(sublime_plugin.WindowCommand):
     style = kwargs.get('style')
     if style == 'dark':
       set_settings(color_scheme=DARK_COLOR_SCHEME, theme=UI_THEME)
-    elif style == 'light':
-      set_settings(color_scheme=LIGHT_COLOR_SCHEME, theme=UI_THEME)
+    elif style == 'bright':
+      set_settings(color_scheme=BRIGHT_COLOR_SCHEME, theme=UI_THEME)
     else:
       self.selectScheme()
 

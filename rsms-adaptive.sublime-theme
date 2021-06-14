@@ -12,53 +12,22 @@
     "tool_tip_bg": "rgb(255,230,160)",
     "tool_tip_fg": "hsl(0, 0%, 15%)",
 
-    // TODO: figure out a way to only use these totally black background while in full-screen.
+    // TODO: figure out a way to only use this totally black background while in full-screen.
     "dark_bg": "black",
     "medium_dark_bg": "var(dark_bg)",
-
-    // "tabset_button_opacity": { "target": 0.6, "speed": 4.0, "interpolation": "smoothstep" },
-    // "tabset_new_tab_button_opacity": { "target": 0.3, "speed": 4.0, "interpolation": "smoothstep" },
-    // "tabset_button_hover_opacity": { "target": 0.8, "speed": 4.0, "interpolation": "smoothstep" },
-
-
-    // "tabset_dark_bg": "dark",
-    // "tabset_medium_dark_bg": "black",
-
-    // "tabset_dark_tint_mod": "color(white a(0.15))",
-    // "tabset_dark_bg": "dark",
-    // "tabset_medium_dark_tint_mod": "var(medium_dark_bg)",
-    // "tabset_medium_dark_bg": "black",
-    // "tabset_medium_tint_mod": "color(black a(0.2))",
-    // "tabset_medium_bg": "var(medium_bg)",
-    // "tabset_light_tint_mod": "color(black a(0.1))",
-    // "tabset_light_bg": "var(light_bg)",
-
-    // "file_tab_angled_unselected_dark_tint": "color(white a(0.08))",
-    // "file_tab_angled_unselected_medium_dark_tint": "color(black a(0.2))",
-    // "file_tab_angled_unselected_medium_tint": "color(black a(0.15))",
-    // "file_tab_angled_unselected_light_tint": "color(black a(0.06))",
-
-    // "file_tab_selected_dark_tint": "color(var(tabset_dark_tint_mod) a(- 70%))",
-    // "file_tab_selected_medium_dark_tint": "color(var(tabset_medium_dark_tint_mod) a(- 70%))",
-    // "file_tab_selected_medium_tint": "color(var(tabset_medium_tint_mod) a(- 70%))",
-    // "file_tab_selected_light_tint": "color(var(tabset_light_tint_mod) a(- 70%))",
-
-    // "file_tab_angled_unselected_label_color": "hsl(0, 0%, 60%)",
-    // "file_tab_angled_unselected_label_shadow": "color(black a(0.25))",
-    // "file_tab_angled_unselected_medium_label_color": "hsl(0, 0%, 75%)",
-    // "file_tab_angled_unselected_medium_label_shadow": "color(black a(0.12))",
-    // "file_tab_angled_unselected_light_label_color": "hsl(0, 0%, 44%)",
-    // "file_tab_angled_unselected_light_label_shadow": "color(white a(0.25))",
 
     "file_tab_unselected_label_color": "hsl(0, 0%, 70%)",
     "file_tab_unselected_light_label_color": "hsl(0, 0%, 30%)",
     "file_tab_selected_label_color": "white",
     "file_tab_selected_light_label_color": "black",
 
-    // "file_tab_close_opacity": { "target": 0.3, "speed": 4.0, "interpolation": "smoothstep" },
-    // "file_tab_close_hover_opacity": { "target": 0.6, "speed": 4.0, "interpolation": "smoothstep" },
-    // "file_tab_close_selected_opacity": { "target": 0.5, "speed": 4.0, "interpolation": "smoothstep" },
-    // "file_tab_close_selected_hover_opacity": { "target": 0.8, "speed": 4.0, "interpolation": "smoothstep" },
+    "sidebar_label_dir": "color(var(--background) blend(white 20%))",
+    "sidebar_label_file": "color(var(--background) blend(white 45%))",
+    "sidebar_label_selected": "white",
+
+    "sidebar_label_dir_light": "color(var(--background) blend(black 20%))",
+    "sidebar_label_file_light": "color(var(--background) blend(black 35%))",
+    "sidebar_label_selected_light": "black",
   },
   "rules": [
 
@@ -73,12 +42,6 @@
       "font.size": "var(font_size)",
       "font.bold": false,
     },
-    { "class": "sidebar_label",
-      "parents": [{"class": "tree_row", "attributes": ["expandable"]}],
-      "settings": ["bold_folder_labels"],
-      "font.bold": false,
-      "font.face": "var(font_face_bold)",
-    },
     { "class": "icon_folder",
       "layer0.texture": null,
       "layer0.opacity": 0,
@@ -87,6 +50,58 @@
     { "class": "icon_file_type",
       "layer0.opacity": 0,
       "content_margin": [0, 0],
+    },
+    // Sidebar row labels
+    { // File (base)
+      "class": "sidebar_label",
+      "fg": "var(sidebar_label_file)",
+    },
+    { "class": "sidebar_label",
+      "parents": [{"class": "window", "attributes": ["file_light"]}],
+      "fg": "var(sidebar_label_file_light)",
+    },
+    { // Dir
+      "class": "sidebar_label",
+      "parents": [{"class": "tree_row", "attributes": ["expandable"]}],
+      "fg": "var(sidebar_label_dir)",
+    },
+    { "class": "sidebar_label",
+      "parents": [
+        {"class": "window", "attributes": ["file_light"]},
+        {"class": "tree_row", "attributes": ["expandable"]}
+      ],
+      "fg": "var(sidebar_label_dir_light)",
+    },
+    { // Hover
+      "class": "sidebar_label",
+      "parents": [{"class": "tree_row", "attributes": ["!selected", "hover"]}],
+      "fg": "var(sidebar_label_selected)",
+    },
+    { "class": "sidebar_label",
+      "parents": [
+        {"class": "window", "attributes": ["file_light"]},
+        {"class": "tree_row", "attributes": ["!selected", "hover"]}
+      ],
+      "fg": "var(sidebar_label_selected_light)",
+    },
+    { // Selected
+      "class": "sidebar_label",
+      "parents": [{"class": "tree_row", "attributes": ["selected"]}],
+      "fg": "var(sidebar_label_selected)",
+    },
+    { "class": "sidebar_label",
+      "parents": [
+        {"class": "window", "attributes": ["file_light"]},
+        {"class": "tree_row", "attributes": ["selected"]}
+      ],
+      "fg": "var(sidebar_label_selected_light)",
+    },
+    { // bold_folder_labels
+      "class": "sidebar_label",
+      "parents": [{"class": "tree_row", "attributes": ["expandable"]}],
+      "settings": ["bold_folder_labels"],
+      "font.bold": false,
+      "font.face": "var(font_face_bold)",
     },
 
     // Tabset

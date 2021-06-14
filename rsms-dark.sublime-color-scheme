@@ -61,8 +61,8 @@
 
     // brackets
     "brackets_options": "foreground bold",
-    "bracket_contents_options": "foreground",
     "brackets_foreground": "var(cursor)",
+    "bracket_contents_options": "foreground",
     "bracket_contents_foreground": "var(cursor)",
 
     // canvas shadow (indicates scroll)
@@ -122,7 +122,7 @@
     {
       // Type definition
       // e.g. "Foo" in `typedef struct x Foo` (C)
-      "scope": "entity.name.type, meta.type.declaration entity.name.type, entity.name.type.typedef",
+      "scope": "entity.name.type, entity.name.class, meta.type.declaration entity.name.type, entity.name.type.typedef",
       "foreground": "color(var(type) lightness(70%) saturation(90%))"
     },
     {

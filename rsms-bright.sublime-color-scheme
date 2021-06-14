@@ -3,7 +3,6 @@
   "author": "rsms",
   "variables":
   {
-    "accent": "hsl(204, 97%, 54%)",
     "black2": "hsl(30, 100%, 13%)",
     "black3": "hsl(240, 100%, 10%)",
     "black4": "hsl(200, 100%, 10%)",
@@ -31,26 +30,38 @@
     "yellow": "hsl(60, 100%, 50%)",
     "yellow2": "hsl(53, 89%, 79%)",
     "yellow3": "hsl(52, 100%, 63%)",
+
+    "accent": "var(blue2)",
   },
   "globals":
   {
     "foreground": "black",
-    // "background": "#f6f8fa",
-    // "background": "hsl(60, 47%, 96%)",
-    // "background": "hsl(60, 30%, 98%)",
     "background": "hsl(60, 30%, 99%)",
     "accent": "var(accent)",
-    "caret": "var(blue2)",
-    "invisibles": "var(red2)",
-    "line_highlight": "color(var(yellow) alpha(0.31))",
+    "caret": "var(accent)",
+
+    // selection
     "selection": "color(var(blue4) alpha(0.5))",
     "selection_border": "color(black alpha(0))",
     "inactive_selection": "color(var(blue4) alpha(0.25))",
-    "gutter_foreground": "var(grey3)",
-    "shadow": "var(white)",
 
+    // guides
     // alpha part controls color of guides (vertical tab lines)
     "guide": "color(black alpha(0.059))",
+
+    // gutter
+    "gutter_foreground": "var(grey3)",
+    "line_highlight": "color(var(yellow) alpha(0.31))",
+
+    // brackets
+    "brackets_options": "foreground bold",
+    "brackets_foreground": "var(accent)",
+    "bracket_contents_options": "foreground",
+    "bracket_contents_foreground": "var(accent)",
+
+    // canvas shadow (indicates scroll)
+    "shadow": "color(var(accent) alpha(0.8))",
+    "shadow_width": "5",
 
     "find_highlight_foreground": "black",
     "find_highlight": "var(yellow3)"
@@ -98,7 +109,7 @@
     },
     {
       // e.g. "Config" in `class Config` (TS)
-      "scope": "entity.name.type.class, entity.name.type.interface",
+      "scope": "entity.name.class, entity.name.type.class, entity.name.type.interface",
       "font_style": "bold"
     },
     {
