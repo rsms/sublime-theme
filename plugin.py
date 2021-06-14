@@ -4,7 +4,7 @@ from os.path import join as pjoin
 from glob import glob
 
 PLUGIN_DIR = os.path.dirname(os.path.realpath(__file__))
-PLUGIN_DIR_REL = os.path.relpath(PLUGIN_DIR)
+PLUGIN_DIR_REL = os.path.basename(PLUGIN_DIR)
 
 UI_THEME            = 'rsms-adaptive.sublime-theme'
 BRIGHT_COLOR_SCHEME = pjoin(PLUGIN_DIR_REL, 'rsms-bright.sublime-color-scheme')
