@@ -33,10 +33,15 @@ In your `Packages/User/Preferences.sublime-settings`:
 "font_options": [ "no_calt" ],
 "line_padding_bottom": 1,
 "line_padding_top": 0,
-"file_tab_style": "square",
 "highlight_line": false,
 "show_tab_close_buttons": false,
 "fold_buttons": false,
+```
+
+When in fullscreen, the square tab styles works much better than the default rounded ones:
+
+```js
+"file_tab_style": "square",
 ```
 
 
