@@ -2,7 +2,7 @@
   "extends": "Adaptive.sublime-theme",
   "variables": {
     "font_face":       "Inter Medium",
-    "font_face_bold":  "Inter Semi Bold",
+    "font_face_bold":  "Inter SemiBold",
     "font_face_mono":  "JetBrains Mono Medium",
     "font_size_sm":    11,
     "font_size":       11,
